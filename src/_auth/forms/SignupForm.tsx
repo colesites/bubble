@@ -38,7 +38,7 @@ const SignupForm = () => {
 
 	return (
 		<Form {...form}>
-			<div className="sm:w-[180px] flex-center flex-col">
+			<div className="sm:w-[300px] flex justify-center items-center flex-col">
 				<img
 					className="scale-[0.4]"
 					src="/assets/bubble.png"
@@ -127,7 +127,7 @@ const SignupForm = () => {
 						type="submit"
 						className="bg-[#452A4B]">
 						{isLoading ? (
-							<div className="flex-center gap-2">Loading...</div>
+							<div className="flex justify-center items-center gap-2">Loading...</div>
 						) : (
 							"Signup"
 						)}
