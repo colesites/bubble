@@ -59,7 +59,7 @@ const SignupForm = () => {
 								<FormLabel className="text-white">Name</FormLabel>
 								<FormControl>
 									<Input
-										className="text-[#585659]"
+										className="text-grey"
 										type="text"
 										placeholder="name"
 										{...field}
@@ -77,7 +77,7 @@ const SignupForm = () => {
 								<FormLabel className="text-white">Username</FormLabel>
 								<FormControl>
 									<Input
-										className="text-[#585659]"
+										className="text-grey"
 										type="text"
 										placeholder="username"
 										{...field}
@@ -95,7 +95,7 @@ const SignupForm = () => {
 								<FormLabel className="text-white">Email</FormLabel>
 								<FormControl>
 									<Input
-										className="text-[#585659]"
+										className="text-grey"
 										type="email"
 										placeholder="email"
 										{...field}
@@ -113,7 +113,7 @@ const SignupForm = () => {
 								<FormLabel className="text-white">Password</FormLabel>
 								<FormControl>
 									<Input
-										className="text-[#585659]"
+										className="text-grey"
 										type="password"
 										placeholder="password"
 										{...field}
@@ -125,7 +125,7 @@ const SignupForm = () => {
 					/>
 					<Button
 						type="submit"
-						className="bg-[#452A4B]">
+						className="bg-purple-one">
 						{isLoading ? (
 							<div className="flex justify-center items-center gap-2">Loading...</div>
 						) : (
