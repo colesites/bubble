@@ -123,10 +123,14 @@ const SignupForm = () => {
 							</FormItem>
 						)}
 					/>
-					<Button type="submit" className="bg-[#452A4B]">
+					<Button
+						type="submit"
+						className="bg-[#452A4B]">
 						{isLoading ? (
 							<div className="flex-center gap-2">Loading...</div>
-						): "Signup"}
+						) : (
+							"Signup"
+						)}
 					</Button>
 				</form>
 			</div>
