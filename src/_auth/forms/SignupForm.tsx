@@ -1,4 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Link } from "react-router-dom";
+
 import {
 	Form,
 	FormControl,
@@ -136,6 +138,11 @@ const SignupForm = () => {
 							"Sign up"
 						)}
 					</Button>
+
+					<p className="text-white text-xs text-center">
+						Already have an account?
+						<Link to="/sign-in" className="font-[600] ml-1">Log in</Link>
+					</p>
 				</form>
 			</div>
 		</Form>
