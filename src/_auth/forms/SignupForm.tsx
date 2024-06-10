@@ -16,6 +16,8 @@ import { SignupValidation } from "@/lib/validation";
 import { z } from "zod";
 
 const SignupForm = () => {
+	const isLoading = true;
+
 	// 1. Define your form.
 	const form = useForm<z.infer<typeof SignupValidation>>({
 		resolver: zodResolver(SignupValidation),
@@ -121,7 +123,11 @@ const SignupForm = () => {
 							</FormItem>
 						)}
 					/>
-					<Button type="submit" className="bg-[#452A4B]">Submit</Button>
+					<Button type="submit" className="bg-[#452A4B]">
+						{isLoading ? (
+							<div className="flex-center gap-2">Loading...</div>
+						): "Signup"}
+					</Button>
 				</form>
 			</div>
 		</Form>
