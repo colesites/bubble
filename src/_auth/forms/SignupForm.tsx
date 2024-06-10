@@ -14,9 +14,10 @@ import { Button } from "@/Components/ui/button";
 import { useForm } from "react-hook-form";
 import { SignupValidation } from "@/lib/validation";
 import { z } from "zod";
+import Loader from "@/Components/shared/Loader";
 
 const SignupForm = () => {
-	const isLoading = true;
+	const isLoading = false;
 
 	// 1. Define your form.
 	const form = useForm<z.infer<typeof SignupValidation>>({
@@ -127,9 +128,12 @@ const SignupForm = () => {
 						type="submit"
 						className="bg-purple-one">
 						{isLoading ? (
-							<div className="flex justify-center items-center gap-2">Loading...</div>
+							<div className="flex justify-center items-center gap-2">
+								<Loader />
+								Loading...
+							</div>
 						) : (
-							"Signup"
+							"Sign up"
 						)}
 					</Button>
 				</form>
