@@ -40,7 +40,7 @@ const SignupForm = () => {
 		<Form {...form}>
 			<div className="sm:w-[300px] flex justify-center items-center flex-col">
 				<img
-					className="scale-[0.4]"
+					className="scale-[0.8]"
 					src="/assets/bubble.png"
 					alt="logo"
 				/>
