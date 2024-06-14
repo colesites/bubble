@@ -7,6 +7,8 @@ import SignupForm from "./_auth/forms/SignupForm.js";
 import RootLayout from "./_root/RootLayout.js";
 import { Home } from "./_root/pages";
 
+import { Toaster } from "@/Components/ui/toaster"
+
 /*import Welcome from './Components/Welcome/Welcome.js'*/
 
 const App = () => {
@@ -33,6 +35,8 @@ const App = () => {
 					/>
 				</Route>
 			</Routes>
+
+			<Toaster />
 		</main>
 	);
 };
