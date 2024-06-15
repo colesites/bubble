@@ -18,10 +18,12 @@ import { SignupValidation } from "@/lib/validation";
 import { z } from "zod";
 import Loader from "@/Components/shared/Loader";
 import { createUserAccount } from "@/lib/appwrite/api";
+import { useCreateUsersAccountMutation } from "@/lib/react-query/quriesAndMutations";
 
 const SignupForm = () => {
 	const { toast } = useToast();
-	const isLoading = false;
+
+	const { mutateAsync: createUserAccount, isLoading: isCreatingUser } = useCreateUsersAccountMutation();
 
 	// 1. Define your form.
 	const form = useForm<z.infer<typeof SignupValidation>>({
@@ -36,7 +38,7 @@ const SignupForm = () => {
 
 	// 2. Define a submit handler.
 	async function onSubmit(values: z.infer<typeof SignupValidation>) {
-		const newUser = await createUserAccount(values);
+		const newUser = await createUserAccount();
 
 		if(!newUser) {
 			return toast({ title: "Sign up failed please try again." });
@@ -135,7 +137,7 @@ const SignupForm = () => {
 					<Button
 						type="submit"
 						className="bg-purple-one">
-						{isLoading ? (
+						{isCreatingUser ? (
 							<div className="flex justify-center items-center gap-2">
 								<Loader />
 								Loading...
