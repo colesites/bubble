@@ -40,40 +40,45 @@ const SignupForm = () => {
 	});
 
 	// 2. Define a submit handler.
-	async function onSubmit(values: z.infer<typeof SignupValidation>) {
-		const newUser = await createUserAccount(values);
+	const handleSignup = async (user: z.infer<typeof SignupValidation>) => {
+		try {
 
-		if(!newUser) {
-			toast({ title: "Sign up failed please try again.", });
-
-			return;
+			const newUser = await createUserAccount(user);
+	
+			if(!newUser) {
+				toast({ title: "Sign up failed please try again.", });
+	
+				return;
+			}
+	
+			const session = await signInAccount({
+				email: user.email,
+				password: user.password,
+			});
+	
+			if(!session) {
+				toast({ title: "Something went wrong. Please login your new account", });
+				
+				navigate("/sign-in");
+	
+				return;
+			}
+	
+			const isLoggedIn = await checkAuthUser();
+	
+			if(isLoggedIn) {
+				form.reset();
+	
+				navigate('/')
+			} else {
+				toast({ title: 'Sign up failed please try again.' });
+	
+				return;
+			}
+		} catch (error) {
+			console.log({ error });
 		}
-
-		const session = await signInAccount({
-			email: values.email,
-			password: values.password,
-		});
-
-		if(!session) {
-			toast({ title: "Something went wrong. Please login your new account", });
-			
-			navigate("/sign-in");
-
-			return;
-		}
-
-		const isLoggedIn = await checkAuthUser();
-
-		if(isLoggedIn) {
-			form.reset();
-
-			navigate('/')
-		} else {
-			toast({ title: 'Sign up failed please try again.' });
-
-			return;
-		}
-	}
+	};
 
 	return (
 		<Form {...form}>
@@ -88,7 +93,7 @@ const SignupForm = () => {
 				<p className="text-white text-xs">To use Bubble enter your details</p>
 
 				<form
-					onSubmit={form.handleSubmit(onSubmit)}
+					onSubmit={form.handleSubmit(handleSignup)}
 					className="flex flex-col gap-4 w-full mt-2">
 					<FormField
 						control={form.control}
