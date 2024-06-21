@@ -169,7 +169,7 @@ const SignupForm = () => {
 					/>
 					<Button
 						type="submit"
-						className="bg-purple-one">
+						className="bg-purple-one/60">
 						{isCreatingAccount || isSigningIn || isUserLoading ? (
 							<div className="flex justify-center items-center gap-2">
 								<Loader />
