@@ -19,8 +19,8 @@ export async function createUserAccount(user: INewUser) {
         const newUser = await saveUserToDB({
             accountId: newAccount.$id,
             name: newAccount.name,
-            username: user.username,
             email: newAccount.email,
+            username: user.username,
             imageUrl: avatarUrl,
         })
 
@@ -59,6 +59,16 @@ export async function signInAccount(user: { email: string; password: string;  })
         return session;
     } catch (error) {
         console.log(error);
+    }
+}
+
+export async function getAccount() {
+    try {
+      const currentAccount = await account.get();
+  
+      return currentAccount;
+    } catch (error) {
+      console.log(error);
     }
 }
 

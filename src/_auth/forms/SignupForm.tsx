@@ -26,7 +26,7 @@ const SignupForm = () => {
 	const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
 
 	const { mutateAsync: createUserAccount, isPending: isCreatingAccount } = useCreateUsersAccount();
-	const { mutateAsync: signInAccount, isPending: isSigningIn } = useSignInAccount();
+	const { mutateAsync: signInAccount, isPending: isSigningInUser } = useSignInAccount();
 
 	// 1. Define your form.
 	const form = useForm<z.infer<typeof SignupValidation>>({
@@ -42,11 +42,10 @@ const SignupForm = () => {
 	// 2. Define a submit handler.
 	const handleSignup = async (user: z.infer<typeof SignupValidation>) => {
 		try {
-
 			const newUser = await createUserAccount(user);
 	
 			if(!newUser) {
-				toast({ title: "Sign up failed please try again.", });
+				toast({ title: "Sign up failed. Please try again.", });
 	
 				return;
 			}
@@ -69,9 +68,9 @@ const SignupForm = () => {
 			if(isLoggedIn) {
 				form.reset();
 	
-				navigate('/')
+				navigate("/")
 			} else {
-				toast({ title: 'Sign up failed please try again.' });
+				toast({ title: "Sign up failed please try again.", });
 	
 				return;
 			}
@@ -170,7 +169,7 @@ const SignupForm = () => {
 					<Button
 						type="submit"
 						className="bg-purple-one/60">
-						{isCreatingAccount || isSigningIn || isUserLoading ? (
+						{isCreatingAccount || isSigningInUser || isUserLoading ? (
 							<div className="flex justify-center items-center gap-2">
 								<Loader />
 								Loading...
