@@ -1,19 +1,19 @@
 import { useToast } from "@/Components/ui/use-toast";
-// import { Loader, UserCard } from "@/Components/shared";
-// import { useGetUsers } from "@/lib/react-query/queries";
+import { Loader, UserCard } from "@/Components/shared";
+import { useGetUsers } from "@/lib/react-query/quriesAndMutations";
 
 const AllUsers = () => {
   const { toast } = useToast();
 
-  //const { data: creators, isLoading, isError: isErrorCreators } = useGetUsers();
+  const { data: creators, isLoading, isError: isErrorCreators } = useGetUsers();
 
-  /*if (isErrorCreators) {
+  if (isErrorCreators) {
     toast({ title: "Something went wrong." });
     
     return;
-  }*/
+  }
 
-  /*return (
+  return (
     <div className="common-container">
       <div className="user-container">
         <h2 className="h3-bold md:h2-bold text-left w-full">All Users</h2>
@@ -30,7 +30,7 @@ const AllUsers = () => {
         )}
       </div>
     </div>
-  );*/
+  );
 };
 
 export default AllUsers;

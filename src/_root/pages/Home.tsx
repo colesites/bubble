@@ -10,12 +10,12 @@ const Home = () => {
   const {
     data: posts,
     isLoading: isPostLoading,
-    isError: isErrorPosts,
+    /*isError: isErrorPosts,*/
   } = useGetRecentPosts();
   const {
     data: creators,
     isLoading: isUserLoading,
-    isError: isErrorCreators,
+    /*isError: isErrorCreators,*/
   } = useGetUsers(10);
 
   const { user: currentUser } = useUserContext();
