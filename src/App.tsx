@@ -5,11 +5,9 @@ import AuthLayout from "./_auth/AuthLayout.js";
 import SigninForm from "./_auth/forms/SigninForm.js";
 import SignupForm from "./_auth/forms/SignupForm.js";
 import RootLayout from "./_root/RootLayout.js";
-import { Home } from "./_root/pages";
+import { Premium, Briefs, Saved, Settings, BubbleCast, BubblePost, Circle, Home, Messages, News, Notifications, Profile, Search } from "./_root/pages";
 
 import { Toaster } from "@/Components/ui/toaster"
-
-/*import Welcome from './Components/Welcome/Welcome.js'*/
 
 const App = () => {
 	return (
@@ -33,6 +31,18 @@ const App = () => {
 						index
 						element={<Home />}
 					/>
+					<Route path="/search" element={<Search />} />
+					<Route path="/news" element={<News />} />
+					<Route path="/notifications" element={<Notifications />} />
+					<Route path="/messages" element={<Messages />} />
+					<Route path="/circle" element={<Circle />} />
+					<Route path="/profile" element={<Profile />} />
+					<Route path="/bubblepost" element={<BubblePost />} />
+					<Route path="/briefs" element={<Briefs/>} />
+					<Route path="/bubblecast" element={<BubbleCast />} />
+					<Route path="/saved" element={<Saved />} />
+					<Route path="/settings" element={<Settings />} />
+					<Route path="/Premium" element={<Premium />} />
 				</Route>
 			</Routes>
 

@@ -77,7 +77,68 @@
 
 body {
 	background-image: url("/assets/background.png");
-  background-position: center -60px;
-  background-size: 100% 150%;
-  background-repeat: no-repeat;
+	background-position: bottom;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #452A4B;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #5c5c7b;
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #7878a3;
+  }
+
+@media (max-width: 360px) {
+	.left-sidebar {
+		width: 50px;
+	}
+
+	.bubble {
+		width: 40px;
+	}
+
+	.icons {
+		width: 16px;
+	}
+
+	.bottom-div {
+		flex-direction: row;
+		gap: 10px;
+	}
+
+	.bubble-ai {
+		width: 20px;
+		height: 20px;
+	}
+
+	.profile {
+		display: none;
+	}
+
+	.profile-text {
+		display: none;
+	}
+}
+
+@media (max-width: 768px) {
+	body {
+		background-image: url("/assets/background.png");
+		background-position: bottom -1px;
+		background-attachment: fixed;
+		background-size: 170% 100%;
+		background-repeat: no-repeat;
+	}
 }
