@@ -1,13 +1,13 @@
-"use-client"
+"use client"
 
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { sidebarLinks } from '@/constants/more';
 import Link from 'next/link';
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, /*useRouter*/ } from "next/navigation";
 
 const More = () => {
-    const route = useRouter();
+    //const route = useRouter();
     const pathname = usePathname();
     const [activeMenu, setActiveMenu] = useState(false);
 
