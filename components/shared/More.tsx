@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { sidebarLinks } from "@/constants/more";
 import Link from "next/link";
 import { usePathname /*useRouter*/ } from "next/navigation";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 
 const More = () => {
 	//const route = useRouter();
@@ -37,20 +38,27 @@ const More = () => {
 								pathname === link.route;
 
 							return (
-								<Link
-									href={link.route}
-									key={link.label}
-									className="row-item-center gap-4">
-									<Image
-										src={isActive ? link.activeImgURL : link.imgURL}
-										alt={link.alt}
-										width={24}
-										height={24}
-									/>
-									<p className={isActive ? "font-semibold" : "text-base"}>
-										{link.label}
-									</p>
-								</Link>
+								<TooltipProvider key={link.label}>
+									<Tooltip>
+										<TooltipTrigger asChild>
+											<Link
+												href={link.route}
+												key={link.label}
+												className="row-item-center gap-4">
+												<Image
+													src={isActive ? link.activeImgURL : link.imgURL}
+													alt={link.alt}
+													width={24}
+													height={24}
+												/>
+												<p className={isActive ? "font-semibold" : "text-base"}>
+													{link.label}
+												</p>
+											</Link>
+										</TooltipTrigger>
+										<TooltipContent>{link.label}</TooltipContent>
+									</Tooltip>
+								</TooltipProvider>
 							);
 						})}
 					</ul>
