@@ -1,10 +1,9 @@
 "use client";
 
 import React from "react";
-import ProfileImage from "../shared/ProfileImage";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 function UserCard() {
 	return (
@@ -12,14 +11,13 @@ function UserCard() {
 			href=""
 			className="flex-row-between-item w-full">
 			<div className="row-flex gap-2">
-				<ProfileImage>
-					<Image
-						width={40}
-						height={40}
+				<Avatar>
+					<AvatarImage
 						src="/assets/images/userprofile.jpg"
 						alt="profile"
 					/>
-				</ProfileImage>
+					<AvatarFallback>NM</AvatarFallback>
+				</Avatar>
 
 				<div className="flex-col-center">
 					<p className="text-white text-sm text-left font-medium leading-[140%] line-clamp-1">
