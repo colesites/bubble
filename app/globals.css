@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@radix-ui/themes/styles.css;
+
+
 @layer components {
 
   /* main */

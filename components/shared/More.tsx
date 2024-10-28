@@ -4,13 +4,23 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { sidebarLinks } from "@/constants/more";
 import Link from "next/link";
+import useLogOut from "@/hooks/useLogOut";
 import { usePathname /*useRouter*/ } from "next/navigation";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from "../ui/tooltip";
+
+import { IconContext } from "react-icons";
+import { CiLogout } from "react-icons/ci";
 
 const More = () => {
-	//const route = useRouter();
 	const pathname = usePathname();
 	const [activeMenu, setActiveMenu] = useState(false);
+
+	const { handleSignOut } = useLogOut();
 
 	return (
 		<div
@@ -31,7 +41,7 @@ const More = () => {
 
 			{activeMenu && (
 				<div className="absolute bottom-20 w-auto h-auto bg-black p-5 rounded-2xl shadow-inner shadow-purple-3 z-50">
-					<ul className="col-flex gap-2 text-white">
+					<ul className="col-flex gap-2 text-white pb-8">
 						{sidebarLinks.map((link) => {
 							const isActive =
 								(pathname.includes(link.route) && link.route.length > 1) ||
@@ -62,6 +72,23 @@ const More = () => {
 							);
 						})}
 					</ul>
+
+					<TooltipProvider>
+						<Tooltip>
+							<TooltipTrigger>
+								<IconContext.Provider value={{ color: "white", size: "24px" }}>
+									<button
+										onClick={handleSignOut}
+										type="button"
+										className="flex gap-4 text-white">
+										<CiLogout />
+										<p>Logout</p>
+									</button>
+								</IconContext.Provider>
+							</TooltipTrigger>
+							<TooltipContent>Logout</TooltipContent>
+						</Tooltip>
+					</TooltipProvider>
 				</div>
 			)}
 		</div>
