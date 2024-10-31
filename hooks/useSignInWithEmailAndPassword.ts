@@ -13,6 +13,7 @@ const useSignIn = () => {
 		useSignInWithEmailAndPassword(auth);
 
 	const signin = async (inputs: SignInUser): Promise<void> => {
+		// Check if email and password fields are filled
 		if (!inputs.email || !inputs.password) {
 			toast({
 				title: "Error",
@@ -25,11 +26,13 @@ const useSignIn = () => {
 		}
 
 		try {
+			// Attempt to sign in with email and password
 			const userCred = await signInWithEmailAndPassword(
 				inputs.email,
 				inputs.password
 			);
 
+				// If sign-in fails, show error toast
 			if (!userCred) {
 				toast({
 					title: "Error",
@@ -40,6 +43,7 @@ const useSignIn = () => {
 				return;
 			}
 
+			// If sign-in succeeds, fetch user data and store in local storage
 			if (userCred) {
 				const docRef = doc(firestore, "users", userCred.user.uid);
 				const docSnap = await getDoc(docRef);
@@ -47,6 +51,7 @@ const useSignIn = () => {
 				window.location.href = "/";
 			}
 		} catch (error) {
+			// Handle errors and show appropriate toast messages
 			if (error instanceof Error) {
 				toast({
 					title: "Error",

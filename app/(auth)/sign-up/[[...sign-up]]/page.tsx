@@ -23,6 +23,7 @@ import useSignUpWithEmailAndPassword from "@/hooks/useSignUpWithEmailAndPassword
 import { Spinner } from "@/components/ui/spinner";
 
 const SignupPage = () => {
+  // Initialize the form with default values and validation schema
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
     defaultValues: {
@@ -33,8 +34,14 @@ const SignupPage = () => {
     },
   });
 
+  // Destructure loading state and signup function from custom hook
   const { loading, signup } = useSignUpWithEmailAndPassword();
 
+  /**
+   * Handles the sign-up form submission.
+   * Attempts to sign up the user with the provided form values.
+   * Resets the form upon successful sign-up.
+   */
   const handleSignUpSubmit = async () => {
     signup(form.getValues()).then(() => {
       form.reset();
@@ -42,8 +49,10 @@ const SignupPage = () => {
   };
 
   return (
+    // Render the form component with the form props
     <Form {...form}>
       <div className="sm:w-[18.75rem] flex-col-center-item">
+        {/* Display the logo image */}
         <Image
           className="scale-[0.8]"
           src="/assets/images/bubble-logo.png"
@@ -52,11 +61,14 @@ const SignupPage = () => {
           alt="logo"
         />
 
+        {/* Display the heading */}
         <h2 className="text-xl font-[700] bg-gradient-to-r from-purple-1 to-orange-1 bg-clip-text text-transparent">
           Create a new account
         </h2>
 
+        {/* Render the form fields */}
         <form className="col-flex w-full mt-2 gap-4">
+          {/* Name field */}
           <FormField
             control={form.control}
             name="name"
@@ -75,6 +87,7 @@ const SignupPage = () => {
               </FormItem>
             )}
           />
+          {/* Username field */}
           <FormField
             control={form.control}
             name="username"
@@ -93,6 +106,7 @@ const SignupPage = () => {
               </FormItem>
             )}
           />
+          {/* Email field */}
           <FormField
             control={form.control}
             name="email"
@@ -111,6 +125,7 @@ const SignupPage = () => {
               </FormItem>
             )}
           />
+          {/* Password field */}
           <FormField
             control={form.control}
             name="password"
@@ -128,7 +143,8 @@ const SignupPage = () => {
                 <FormMessage />
               </FormItem>
             )}
-          />{" "}
+          />
+          {/* Submit button */}
           <Button
             variant="signup"
             size="xs"
@@ -137,13 +153,14 @@ const SignupPage = () => {
             disabled={!!loading}
           >
             {loading ? (
-              <div className="row-flex gap-2">
+              <div className="row-flex gap-2 items-center">
                 <Spinner /> Loading...
               </div>
             ) : (
               "Sign up"
             )}
           </Button>
+          {/* Link to sign-in page */}
           <p className="text-white text-xs text-center">
             Already have an account?
             <Link href="/sign-in" className="font-[600] ml-1">

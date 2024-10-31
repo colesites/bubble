@@ -18,6 +18,7 @@ const useSignUpWithEmailAndPassword = () => {
 
 	const signup = async (inputs: NewUser) => {
 
+		// Check if all required fields are filled
 		if (!inputs.email || !inputs.password || !inputs.username || !inputs.name) {
 			toast({
 				title: "Error",
@@ -29,11 +30,13 @@ const useSignUpWithEmailAndPassword = () => {
 		}
 
 		try {
+			// Attempt to create a new user with email and password
 			const newUser = await createUserWithEmailAndPassword(
 				inputs.email,
 				inputs.password
 			);
 
+			// Handle any errors that occur during user creation
 			if (error) {
 				toast({
 					title: "Error",
@@ -44,6 +47,7 @@ const useSignUpWithEmailAndPassword = () => {
 				return;
 			}
 
+			// If user creation fails, show error toast
 			if (!newUser) {
 				toast({
 					title: "Error",
@@ -54,6 +58,7 @@ const useSignUpWithEmailAndPassword = () => {
 				return;
 			}
 
+			// If user creation succeeds, create user document in Firestore
 			if (newUser) {
 				const userDocument = {
 					uid: newUser.user.uid,
@@ -75,6 +80,7 @@ const useSignUpWithEmailAndPassword = () => {
 				window.location.href = "/";
 			}
 		} catch (error) {
+			// Handle any errors that occur during the process
 			if (error instanceof Error) {
 				toast({
 					title: "Error",
