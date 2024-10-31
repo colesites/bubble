@@ -33,8 +33,9 @@ function Menu() {
   // State to manage menu visibility
   const [activeMenu, setActiveMenu] = useState(false);
 
-  // Handlers for menu interactions
+  // Handler for toggling active menu
   const handleSetActiveMenu = () => setActiveMenu(!activeMenu);
+  // Handler for closing active menu
   const handleCloseActiveMenu = () => setActiveMenu(false);
 
   /**

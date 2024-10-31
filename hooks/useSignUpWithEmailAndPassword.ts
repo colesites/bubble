@@ -7,6 +7,7 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useToast } from "@/hooks/use-toast";
 import useAuthStore from "@/store/authStore";
 
+// Function to handle user signup with email and password
 const useSignUpWithEmailAndPassword = () => {
 	const { toast } = useToast();
 
@@ -16,6 +17,7 @@ const useSignUpWithEmailAndPassword = () => {
 	const [createUserWithEmailAndPassword, loading, error] =
 		useCreateUserWithEmailAndPassword(auth);
 
+	// Signup function
 	const signup = async (inputs: NewUser) => {
 
 		// Check if all required fields are filled

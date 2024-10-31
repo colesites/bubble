@@ -5,6 +5,8 @@ import useAuthStore from "@/store/authStore";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+// This is the Home component, which serves as the main landing page for authenticated users.
+// If the user is not authenticated, they will be redirected to the sign-in page.
 function Home() {
 	const authUser = useAuthStore((state) => state.user);
 	const router = useRouter();

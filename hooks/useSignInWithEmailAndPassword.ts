@@ -6,12 +6,14 @@ import { doc, getDoc } from "firebase/firestore";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useToast } from "@/hooks/use-toast";
 
+// Function to handle user signup with email and password
 const useSignIn = () => {
 	const { toast } = useToast();
 
 	const [signInWithEmailAndPassword, loading, error] =
 		useSignInWithEmailAndPassword(auth);
 
+	// Signin function
 	const signin = async (inputs: SignInUser): Promise<void> => {
 		// Check if email and password fields are filled
 		if (!inputs.email || !inputs.password) {
