@@ -20,11 +20,13 @@ const More = () => {
 	const pathname = usePathname();
 	const [activeMenu, setActiveMenu] = useState(false);
 
+	const handleSetActiveMenu = () => setActiveMenu(!activeMenu);
+
 	const { handleSignOut } = useLogOut();
 
 	return (
 		<div
-			onClick={() => setActiveMenu(!activeMenu)}
+			onClick={handleSetActiveMenu}
 			className="row-item-center gap-4 pt-4 px-10 cursor-pointer">
 			<div>
 				<Image

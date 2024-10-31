@@ -13,7 +13,7 @@
   }
 
   .topbar {
-    @apply fixed flex top-0 w-full justify-between items-center bg-black border-b border-b-purple-500 z-50 md:hidden;
+    @apply fixed flex top-0 w-full justify-between items-center bg-black border-b border-b-purple-600 z-50 md:hidden;
   }
 
   .leftsidebar {

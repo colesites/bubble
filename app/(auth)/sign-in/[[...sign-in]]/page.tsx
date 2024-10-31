@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-//import { useToast } from "@/hooks/use-toast";
 
 import {
   Form,
@@ -36,6 +35,16 @@ const SigninPage = () => {
   });
 
   const { loading, signin } = useSignInWithEmailAndPassword();
+
+  const handleSignInSubmit = async () => {
+    try {
+      await signin(form.getValues());
+      form.reset();
+    } catch (error) {
+      console.error("Sign-in: ", error);
+      !loading;
+    }
+  };
 
   return (
     <Form {...form}>
@@ -95,15 +104,7 @@ const SigninPage = () => {
             variant="signup"
             size="xs"
             type="submit"
-            onClick={form.handleSubmit(async () => {
-              try {
-                await signin(form.getValues());
-                form.reset();
-              } catch (error) {
-                console.error("Sign-in: ", error);
-                !loading;
-              }
-            })}
+            onClick={form.handleSubmit(handleSignInSubmit)}
             disabled={!!loading}
           >
             {loading ? (

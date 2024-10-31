@@ -22,7 +22,7 @@ function Home() {
 			<div className="col-item-center flex-1 gap-10 py-10 overflow-y-scroll custom-scrollbar">
 				{/*<Status />*/}
 				{/*<Main />*/}
-				<p>y</p>
+				<p>Home</p>
 			</div>
 			<div>
 				<RightSidebar />

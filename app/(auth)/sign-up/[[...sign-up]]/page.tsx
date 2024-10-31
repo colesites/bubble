@@ -35,6 +35,12 @@ const SignupPage = () => {
 
   const { loading, signup } = useSignUpWithEmailAndPassword();
 
+  const handleSignUpSubmit = async () => {
+    signup(form.getValues()).then(() => {
+      form.reset();
+    });
+  };
+
   return (
     <Form {...form}>
       <div className="sm:w-[18.75rem] flex-col-center-item">
@@ -127,11 +133,7 @@ const SignupPage = () => {
             variant="signup"
             size="xs"
             type="submit"
-            onClick={form.handleSubmit(() =>
-              signup(form.getValues()).then(() => {
-                form.reset();
-              })
-            )}
+            onClick={form.handleSubmit(handleSignUpSubmit)}
             disabled={!!loading}
           >
             {loading ? (
