@@ -12,7 +12,7 @@ export default function Loading() {
       <div className="absolute col-flex gap-4 bottom-10">
         <p className="text-white">from</p>
         <Image
-          src="/assets/images/c-tech.png"
+          src="/assets/images/ctech.svg"
           width={30}
           height={30}
           alt="C Tech Logo"
