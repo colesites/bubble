@@ -3,13 +3,16 @@ import Image from "next/image";
 export default function Loading() {
   return (
     <section className="col-flex justify-center items-center bg-black w-full min-h-screen">
-      <Image
-        src="/assets/images/bubble-svg.svg"
-        width={120}
-        height={120}
-        alt="Bubble logo"
-      />
-      <div className="absolute col-flex gap-4 bottom-10">
+      <div className="flex justify-center items-center flex-grow">
+        <Image
+          src="/assets/images/bubble-svg.svg"
+          width={120}
+          height={120}
+          alt="Bubble logo"
+        />
+      </div>
+      
+      <div className="col-flex gap-4 mb-2 mt-auto">
         <p className="text-white">from</p>
         <Image
           src="/assets/images/ctech.svg"
