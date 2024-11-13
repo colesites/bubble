@@ -79,7 +79,7 @@ function Menu() {
               {topBarLinks.map((link) => {
                 // Determine if current route is active
                 const isActive =
-                  (pathname.includes(link.route) && link.route.length > 1) ||
+                  (pathname?.includes(link.route) && link.route.length > 1) ||
                   pathname === link.route;
 
                 return (
