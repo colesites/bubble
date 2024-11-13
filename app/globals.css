@@ -4,6 +4,18 @@
 
 @radix-ui/themes/styles.css;
 
+html,
+body,
+#__next {
+  height: 100%;
+  background-color: black;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 @layer components {
 

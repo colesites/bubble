@@ -13,7 +13,7 @@ class MyDocument extends Document {
           <link rel="preload" href="/assets/images/bubble-svg.svg" as="image" />
           <link rel="preload" href="/assets/images/ctech.svg" as="image" />
         </Head>
-        <body>
+        <body className="bg-black">
           <Main />
           <NextScript />
         </body>

@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Loading() {
   return (
     
-      <section className="flex flex-col justify-center items-center bg-black w-full min-h-screen">
+      <section className="flex flex-col justify-center items-center bg-black w-full h-screen">
         <div className="flex justify-center items-center flex-grow">
           <Image
             src="/assets/images/bubble-svg.svg"
