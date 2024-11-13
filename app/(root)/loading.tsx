@@ -10,6 +10,7 @@ export default function Loading() {
           height={120}
           alt="Bubble logo"
           priority
+          loading="eager"
         />
       </div>
       
@@ -21,6 +22,7 @@ export default function Loading() {
           height={30}
           alt="C Tech Logo"
           priority
+          loading="eager"
         />
       </div>
     </section>
