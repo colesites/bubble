@@ -1,6 +1,23 @@
+"use client"
+
 import Image from "next/image";
 
+import useAuthStore from "@/store/authStore";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 export default function Loading() {
+  const authUser = useAuthStore((state) => state.user);
+	const router = useRouter();
+
+	useEffect(() => {
+    if (!authUser) {
+      router.push("/sign-in");
+    } else {
+			router.push("/");
+		}
+  }, [authUser, router]);
+
   return (
     
       <section className="flex flex-col justify-center items-center bg-black w-full h-screen">
